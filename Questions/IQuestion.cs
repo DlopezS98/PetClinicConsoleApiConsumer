@@ -1,4 +1,4 @@
-namespace Questions;
+namespace PetClinicApiConsumer.Questions;
 
 public interface IQuestion
 {
