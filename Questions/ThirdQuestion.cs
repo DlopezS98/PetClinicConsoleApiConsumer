@@ -10,10 +10,11 @@ public class ThirdQuestion(Services services) : BaseHttpRequest(services), IQues
         try
         {
             HttpResponseMessage reponse = await _httpClient.GetAsync(services.PetClinic.Vets);
+            // HttpResponseMessage reponse = await _httpClient.GetAsync(services.PetClinic.Visits);
             if (!reponse.IsSuccessStatusCode) throw new Exception("Failed to get vets");
 
             string content = await reponse.Content.ReadAsStringAsync();
-            List<Visit> visits = JsonSerializer.Deserialize<List<Visit>>(content) ?? [];
+            List<Visit> visits = JsonSerializer.Deserialize<List<Visit>>(content, baseSerializedOptions) ?? [];
 
             int counter = 0;
             foreach (Visit v in visits)

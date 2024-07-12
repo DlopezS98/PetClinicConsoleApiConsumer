@@ -13,7 +13,7 @@ public class SecondQuestion(Services services) : BaseHttpRequest(services), IQue
             if (!reponse.IsSuccessStatusCode) throw new Exception("Failed to get vets");
 
             string content = await reponse.Content.ReadAsStringAsync();
-            List<Vet> vets = JsonSerializer.Deserialize<List<Vet>>(content) ?? [];
+            List<Vet> vets = JsonSerializer.Deserialize<List<Vet>>(content, baseSerializedOptions) ?? [];
 
             Console.WriteLine(vets.Count);
         }
