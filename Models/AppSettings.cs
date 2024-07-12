@@ -17,4 +17,7 @@ public class PetClinic
     public string BaseUrl { get; set; } = string.Empty;
     public string Vets { get; set; } = string.Empty;
     public string Owners { get; set; } = string.Empty;
+    public string Pets { get; set; } = string.Empty;
+    public string Visits { get; set; } = string.Empty;
+    public string Specialties { get; set; } = string.Empty;
 }
