@@ -9,7 +9,7 @@ public class FourthQuestion(Services services) : BaseHttpRequest(services), IQue
 {
     private async Task<Uri> CreateSpecialityAsync(Speciality speciality)
     {
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/specialties", speciality);
+        HttpResponseMessage response = await client.PostAsJsonAsync("api/specialties", speciality);
         response.EnsureSuccessStatusCode();
 
         // return URI of the created resource.
@@ -21,9 +21,9 @@ public class FourthQuestion(Services services) : BaseHttpRequest(services), IQue
     {
         try
         {
-            _httpClient.BaseAddress = new Uri("http://localhost:9966/petclinic/");
-            _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            client.BaseAddress = new Uri("http://localhost:9966/petclinic/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             Speciality speciality = new Speciality()
             {

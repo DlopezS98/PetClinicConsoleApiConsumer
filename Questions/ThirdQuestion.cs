@@ -9,7 +9,7 @@ public class ThirdQuestion(Services services) : BaseHttpRequest(services), IQues
     {
         try
         {
-            HttpResponseMessage reponse = await _httpClient.GetAsync(services.PetClinic.Vets);
+            HttpResponseMessage reponse = await client.GetAsync(services.PetClinic.Vets);
             // HttpResponseMessage reponse = await _httpClient.GetAsync(services.PetClinic.Visits);
             if (!reponse.IsSuccessStatusCode) throw new Exception("Failed to get vets");
 

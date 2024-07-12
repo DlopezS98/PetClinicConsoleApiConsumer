@@ -18,6 +18,9 @@ Console.WriteLine("1. First Question");
 Console.WriteLine("2. Second Question");
 Console.WriteLine("3. Third Question");
 Console.WriteLine("4. Fourth Question");
+Console.WriteLine("5. Fifth Question");
+Console.WriteLine("6. Sixth Question");
+Console.WriteLine("7. Seventh Question");
 
 int questionNumber = int.Parse(Console.ReadLine()!) - 1;
 QuestionType questionType = Enum.Parse<QuestionType>(questionNumber.ToString());
