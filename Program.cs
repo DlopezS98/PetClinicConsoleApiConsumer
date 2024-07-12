@@ -19,7 +19,7 @@ Console.WriteLine("2. Second Question");
 Console.WriteLine("3. Third Question");
 Console.WriteLine("4. Fourth Question");
 
-int questionNumber = int.Parse(Console.ReadLine()!);
+int questionNumber = int.Parse(Console.ReadLine()!) - 1;
 QuestionType questionType = Enum.Parse<QuestionType>(questionNumber.ToString());
 
 var container = Container.GetInstace(services);
