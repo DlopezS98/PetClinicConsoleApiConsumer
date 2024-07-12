@@ -4,7 +4,8 @@ namespace PetClinicApiConsumer.Questions;
 
 public enum QuestionType
 {
-    FirstQuestion
+    FirstQuestion,
+    SecondQuestion
 }
 
 public class Container(Services services)
@@ -21,6 +22,7 @@ public class Container(Services services)
         return questionType switch
         {
             QuestionType.FirstQuestion => new FirstQuestion(_services),
+            QuestionType.SecondQuestion => new SecondQuestion(_services),
             _ => throw new ArgumentException($"Question {questionType} not found")
         };
     }
