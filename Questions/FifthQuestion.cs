@@ -7,39 +7,39 @@ namespace PetClinicApiConsumer.Questions;
 
 public class FifthQuestion(Services services) : BaseHttpRequest(services), IQuestion
 {
-    async Task<Speciality> CreateSpecialityAsync(Speciality speciality)
+    async Task<Specialty> CreateSpecialityAsync(Specialty speciality)
     {
         HttpResponseMessage response = await client.PostAsJsonAsync(
             "api/specialties", speciality);
         response.EnsureSuccessStatusCode();
         string jsonContent = response.Content.ReadAsStringAsync().Result;
-        Speciality dev = JsonSerializer.Deserialize<Speciality>(jsonContent, baseSerializedOptions) ?? throw new Exception("Error deserializing the response");
+        Specialty dev = JsonSerializer.Deserialize<Specialty>(jsonContent, baseSerializedOptions) ?? throw new Exception("Error deserializing the response");
         return dev;
     }
 
-    async Task<List<Speciality>> GetSpecialitiesAsync()
+    async Task<List<Specialty>> GetSpecialitiesAsync()
     {
         HttpResponseMessage response = await client.GetAsync(
             "api/specialties");
         response.EnsureSuccessStatusCode();
         string jsonString = await response.Content.ReadAsStringAsync();
-        List<Speciality> specialities = JsonSerializer.Deserialize<List<Speciality>>(jsonString, baseSerializedOptions) ?? [];
+        List<Specialty> specialities = JsonSerializer.Deserialize<List<Specialty>>(jsonString, baseSerializedOptions) ?? [];
         return specialities;
     }
 
-    async Task<Speciality> GetSpecialityAsync(int id)
+    async Task<Specialty> GetSpecialityAsync(int id)
     {
         HttpResponseMessage response = await client.GetAsync(
             "api/specialties" + "/" + id);
         response.EnsureSuccessStatusCode();
         string jsonString = await response.Content.ReadAsStringAsync();
-        Speciality dev = JsonSerializer.Deserialize<Speciality>(jsonString, baseSerializedOptions) ?? throw new Exception("Error deserializing the response");
+        Specialty dev = JsonSerializer.Deserialize<Specialty>(jsonString, baseSerializedOptions) ?? throw new Exception("Error deserializing the response");
         return dev;
     }
 
-    static Speciality? FindByName(List<Speciality> specialityList, string name)
+    static Specialty? FindByName(List<Specialty> specialityList, string name)
     {
-        foreach (Speciality s in specialityList)
+        foreach (Specialty s in specialityList)
         {
             if (s.Name.Equals(name))
                 return s;
@@ -56,24 +56,24 @@ public class FifthQuestion(Services services) : BaseHttpRequest(services), IQues
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Speciality specialityToBeCreated = new Speciality()
+            Specialty specialityToBeCreated = new Specialty()
             {
                 Id = 123,
                 Name = "MySpecialityDemo"
             };
 
             // Añadir
-            Speciality specialityCreated = await CreateSpecialityAsync(specialityToBeCreated);
+            Specialty specialityCreated = await CreateSpecialityAsync(specialityToBeCreated);
             Console.WriteLine("specialityCreated -> " + specialityCreated);
 
             // Buscar todos
-            List<Speciality> specialityList = await GetSpecialitiesAsync();
+            List<Specialty> specialityList = await GetSpecialitiesAsync();
             Console.WriteLine("specialityList size -> " + specialityList.Count);
-            Speciality specialityFounded = FindByName(specialityList, "MySpecialityDemo") ?? throw new Exception("Speciality not found");
+            Specialty specialityFounded = FindByName(specialityList, "MySpecialityDemo") ?? throw new Exception("Speciality not found");
             Console.WriteLine("specialityFounded -> " + specialityFounded);
 
             // Buscar por id
-            Speciality specialityFoundedIndividual = await GetSpecialityAsync(specialityFounded.Id);
+            Specialty specialityFoundedIndividual = await GetSpecialityAsync(specialityFounded.Id);
             Console.WriteLine("specialityFoundedIndividual -> " + specialityFoundedIndividual);
 
         }

@@ -7,7 +7,7 @@ namespace PetClinicApiConsumer.Questions;
 
 public class FourthQuestion(Services services) : BaseHttpRequest(services), IQuestion
 {
-    private async Task<Uri> CreateSpecialityAsync(Speciality speciality)
+    private async Task<Uri> CreateSpecialityAsync(Specialty speciality)
     {
         HttpResponseMessage response = await client.PostAsJsonAsync("api/specialties", speciality);
         response.EnsureSuccessStatusCode();
@@ -25,7 +25,7 @@ public class FourthQuestion(Services services) : BaseHttpRequest(services), IQue
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Speciality speciality = new Speciality()
+            Specialty speciality = new Specialty()
             {
                 Id = 100,
                 Name = "MySpec100"

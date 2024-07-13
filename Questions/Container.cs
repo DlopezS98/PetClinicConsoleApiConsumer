@@ -31,7 +31,7 @@ public class Container(Services services)
             QuestionType.ThirdQuestion => new ThirdQuestion(_services),
             QuestionType.FourthQuestion => new FourthQuestion(_services),
             QuestionType.FifthQuestion => new FifthQuestion(_services),
-            // QuestionType.SixthQuestion => new SixthQuestion(_services),
+            QuestionType.SixthQuestion => new SixthQuestion(_services),
             // QuestionType.SeventhQuestion => new SeventhQuestion(_services),
             _ => throw new ArgumentException($"Question {questionType} not found")
         };
