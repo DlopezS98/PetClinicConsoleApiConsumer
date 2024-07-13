@@ -10,7 +10,8 @@ public enum QuestionType
     FourthQuestion,
     FifthQuestion,
     SixthQuestion,
-    SeventhQuestion
+    SeventhQuestion,
+    EighthQuestion
 }
 
 public class Container(Services services)
@@ -33,6 +34,7 @@ public class Container(Services services)
             QuestionType.FifthQuestion => new FifthQuestion(_services),
             QuestionType.SixthQuestion => new SixthQuestion(_services),
             QuestionType.SeventhQuestion => new SeventhQuestion(_services),
+            QuestionType.EighthQuestion => new EighthQuestion(_services),
             _ => throw new ArgumentException($"Question {questionType} not found")
         };
     }
