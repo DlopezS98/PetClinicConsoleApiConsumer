@@ -69,7 +69,7 @@ public class FifthQuestion(Services services) : BaseHttpRequest(services), IQues
             // Buscar todos
             List<Speciality> specialityList = await GetSpecialitiesAsync();
             Console.WriteLine("specialityList size -> " + specialityList.Count);
-            Speciality specialityFounded = FindByName(specialityList, "MySpecialityDemo");
+            Speciality specialityFounded = FindByName(specialityList, "MySpecialityDemo") ?? throw new Exception("Speciality not found");
             Console.WriteLine("specialityFounded -> " + specialityFounded);
 
             // Buscar por id
